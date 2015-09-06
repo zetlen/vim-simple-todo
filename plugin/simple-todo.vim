@@ -26,7 +26,11 @@ endif
 " Private functions {{{
 
 fu! s:get_list_marker(linenr) " {{{
-  return substitute(getline(a:linenr), '^\s*\([-+*]\?\s*\).*', '\1', '')
+  " let detected = substitute(getline(a:linenr), '^\s*\([-+*]\?\s*\).*', '\1', '')
+  " if detected == ""
+  "   return detected
+  " endif
+  return " - "
 endfu " }}}
 
 " }}}
@@ -60,8 +64,8 @@ vnore <Plug>(simple-todo-mark-as-undone) :execute 's/^\(\s*[-+*]\?\s*\)\[' . g:s
 inore <Plug>(simple-todo-mark-as-undone) <Esc>:execute 's/^\(\s*[-+*]\?\s*\)\[' . g:simple_todo_tick_symbol . ']/\1[ ]/'<cr>
 
 " Add new header
-nnore <Plug>(simple-todo-header) "=strftime("### %c")<CR>P
-inore <Plug>(simple-todo-header) <Esc>"=strftime("### %c")<CR>P
+nnore <Plug>(simple-todo-header) O<Esc>O<Esc><c-r>=strftime("### %c")<CR><Esc>
+inore <Plug>(simple-todo-header) <Esc>o<c-r>"=strftime("### %c")<CR><Esc>
 
 " }}}
 " Key bindings {{{
@@ -82,7 +86,7 @@ if g:simple_todo_map_keys
   nmap <silent><Leader>X <Plug>(simple-todo-mark-as-undone)
   vmap <silent><Leader>X <Plug>(simple-todo-mark-as-undone)
   imap <silent><Leader>X <Plug>(simple-todo-mark-as-undone)
-  nmap <silent><Leader>h <Plug>(simple-todo-header)
+  nmap <silent><Leader>p <Plug>(simple-todo-header)
 endif
 
 " }}}
