@@ -64,7 +64,7 @@ vnore <Plug>(simple-todo-mark-as-undone) :execute 's/^\(\s*[-+*]\?\s*\)\[' . g:s
 inore <Plug>(simple-todo-mark-as-undone) <Esc>:execute 's/^\(\s*[-+*]\?\s*\)\[' . g:simple_todo_tick_symbol . ']/\1[ ]/'<cr>
 
 " Add new header
-nnore <Plug>(simple-todo-header) O<Esc>O<Esc><c-r>=strftime("### %c")<CR><Esc>
+nnore <Plug>(simple-todo-header) O<Esc>O<c-r>=strftime("### %c")<CR><Esc>
 inore <Plug>(simple-todo-header) <Esc>o<c-r>"=strftime("### %c")<CR><Esc>
 
 " }}}
