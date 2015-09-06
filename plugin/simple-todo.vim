@@ -37,21 +37,21 @@ endfu " }}}
 " Public API {{{
 
 " Create a new item
-nnore <Plug>(simple-todo-new) i[ ]<space>
-inore <Plug>(simple-todo-new) [ ]<space>
+" nnore <Plug>(simple-todo-new) i[ ]<space>
+" inore <Plug>(simple-todo-new) [ ]<space>
 
 " Create a new item at the start of this line
-inore <Plug>(simple-todo-new-start-of-line) <Esc>mzI<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space><Esc>`z4la
-nnore <Plug>(simple-todo-new-start-of-line) mzI<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space><Esc>`z4l
-vnore <Plug>(simple-todo-new-start-of-line) I<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
+" inore <Plug>(simple-todo-new-start-of-line) <Esc>mzI<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space><Esc>`z4la
+" nnore <Plug>(simple-todo-new-start-of-line) mzI<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space><Esc>`z4l
+" vnore <Plug>(simple-todo-new-start-of-line) I<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
 
 " Create a new item below
-nnore <Plug>(simple-todo-below) o<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
-inore <Plug>(simple-todo-below) <Esc>o<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
+nnore <Plug>(simple-todo-below) o<Esc>^a<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
+inore <Plug>(simple-todo-below) <Esc>o<Esc>^a<c-r>=<SID>get_list_marker(line('.')-1)<cr>[ ]<space>
 
 " Create a new item above
-nnore <Plug>(simple-todo-above) O<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<space>
-inore <Plug>(simple-todo-above) <Esc>O<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<space>
+nnore <Plug>(simple-todo-above) O<Esc>^a<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<space>
+inore <Plug>(simple-todo-above) <Esc>O<Esc>^a<c-r>=<SID>get_list_marker(line('.')+1)<cr>[ ]<space>
 
 " Mark item under cursor as done
 nnore <Plug>(simple-todo-mark-as-done) :execute 's/^\(\s*[-+*]\?\s*\)\[ \]/\1[' . g:simple_todo_tick_symbol . ']/'<cr>
@@ -71,11 +71,11 @@ inore <Plug>(simple-todo-header) <Esc>o<c-r>"=strftime("### %c")<CR><Esc>
 " Key bindings {{{
 
 if g:simple_todo_map_keys
-  nmap <silent><Leader>i <Plug>(simple-todo-new)
-  imap <silent><Leader>i <Plug>(simple-todo-new)
-  imap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
-  nmap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
-  vmap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
+  " nmap <silent><Leader>i <Plug>(simple-todo-new)
+  " imap <silent><Leader>i <Plug>(simple-todo-new)
+  " imap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
+  " nmap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
+  " vmap <silent><Leader>I <Plug>(simple-todo-new-start-of-line)
   nmap <silent><Leader>o <Plug>(simple-todo-below)
   imap <silent><Leader>o <Plug>(simple-todo-below)
   nmap <silent><Leader>O <Plug>(simple-todo-above)
